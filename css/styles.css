@@ -138,6 +138,13 @@ body {
     transform: scale(0.98);
 }
 
+/* Efecto visual al hacer clic (añadido dinámicamente con jQuery) */
+.btn-prioridad.clicked {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.5);
+    filter: brightness(0.9);
+}
+
 /* Cuando la tarea está marcada */
 .tarjeta-tarea.prioridad-alta .btn-prioridad {
     background-color: var(--color-prioridad-alta);

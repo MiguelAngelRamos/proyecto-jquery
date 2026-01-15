@@ -22,6 +22,21 @@ function togglePrioridad(tareaId) {
 
 function inicializarEventos() {
   $('.btn-prioridad').on('click', function() {
-    console.log('Botón de prioridad clickeado');
+    // obtener el id de la tarea desde el atributo tarea-id que es un atributo personalizado
+    const tareaId = $(this).data('tarea-id');
+    console.log(tareaId);
+
+    // aplicar efecto visual
+    $(this).addClass('clicked');
+
+    setTimeout(() => {
+      $(this).removeClass('clicked');
+    }, 1000);
+
+    togglePrioridad(tareaId);
   });
 }
+
+$(document).ready(function() {
+  inicializarEventos();
+});
