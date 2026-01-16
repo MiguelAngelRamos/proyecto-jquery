@@ -77,17 +77,20 @@ function actualizarContadorTareas() {
 // funcion para marcar/desmarcar tareas con prioridad
 // toggle
 function togglePrioridad(tareaId) {
-    // ========== PASO 1: SELECCIONAR ELEMENTOS DEL DOM ==========
+    // ========== PASO 1: SELECCIONAR (CAPTURAR) ELEMENTOS DEL DOM ==========
     
     // Selecciona la tarjeta completa (div con clase .tarjeta-tarea) que contiene el atributo data-tarea-id
     // Ejemplo en HTML: <div class="card tarjeta-tarea" data-tarea-id="1">
-    const tarjeta = $(`.tarjeta-tarea[data-tarea-id="${tareaId}"]`);
+      const tarjeta = $(`.tarjeta-tarea[data-tarea-id="${tareaId}"]`);
+    // const tarjeta = $(`.tarjeta-tarea[data-tarea-id="${tareaId}"]`);
     
     // Selecciona el botón específico dentro de esa tarjeta
     // Ejemplo en HTML: <button class="btn btn-outline-danger btn-prioridad" data-tarea-id="1">
     const boton = $(`.btn-prioridad[data-tarea-id="${tareaId}"]`);
     
+  
     // Busca dentro de la tarjeta el icono de fuego (que está oculto por defecto con d-none)
+    // d-none (display: none) es una clase de Bootstrap que oculta elementos
     // Ejemplo en HTML: <i class="fas fa-fire icono-prioridad d-none text-warning"></i>
     const iconoPrioridad = tarjeta.find('.icono-prioridad');
     
@@ -98,7 +101,7 @@ function togglePrioridad(tareaId) {
     // ========== PASO 2: VERIFICAR ESTADO ACTUAL ==========
     
     // Buscar si el tareaId ya existe en el array tareasPrioridad
-    // indexOf() retorna -1 si NO encuentra el elemento, o su posición si SÍ lo encuentra
+    // indexOf() retorna -1 si NO encuentra el elemento
     const index = tareasPrioridad.indexOf(tareaId);
     
     // ========== PASO 3: LÓGICA DE TOGGLE (ALTERNANCIA) ==========
@@ -191,6 +194,7 @@ function inicializarEventos() {
   });
 }
 
+// Funcion principal que se ejecuta al cargar el documento html
 $(document).ready(function() {
   inicializarEventos();
 });
